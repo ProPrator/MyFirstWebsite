@@ -16,6 +16,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('mainPage');
 });
+Route::get('/contacts', function () {
+    return view('contacts');
+});
+
+Route::get('/posts', 'PostController@showAll');
+Route::get('/post/{id}', 'PostController@showOne')->where(['id' => '[0-9]+']);
+
+
+
+
 
 Route::get('/main', 'MainController@main');
 

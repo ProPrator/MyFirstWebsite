@@ -10,28 +10,25 @@
     <title>@yield('title')</title>
 </head>
 <body>
-<div>
-    <nav id="header" class="navbar navbar-expand navbar-dark bg-dark">
-        <div class="collapse navbar-collapse d-flex justify-content-center">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Главная<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Блог<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">О себе</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Контакты</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-</div>
-<div>
-    <div class="row">
-        <div class="col-2"></div>
-        <div id="content" class="col">
+    <header>
+        <nav class="navbar  navbar-expand navbar-dark bg-dark">
+            <div class="collapse navbar-collapse d-flex justify-content-center">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Главная<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/posts">Блог<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contacts">Контакты</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="row">
+            <div class="col-xl-2"></div>
+            <div id="content" class="col">
 

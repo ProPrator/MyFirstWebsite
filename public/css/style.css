@@ -1,5 +1,10 @@
+main {
+    margin-right: 15px;
+}
+
 #content {
     background-color: lightgray;
+    min-height: 86vh;
     text-align: justify;
     font-family: SEGOE SCRIPT;
     text-indent: 20px;
@@ -7,25 +12,15 @@
 
 }
 
-    #content>h2 {
-        text-align: center;
-        margin: 30px;
+    footer>li>a {
+        color: darkgrey;
     }
 
-#footer>li>a {
-    color: darkgrey;
-}
+    footer>li>a:hover {
+        color: #f5f5f5;
+    }
 
-#footer>li>a:hover {
-    color: #f5f5f5;
-}
-
-.text>img {
-    float: left;
-    margin: 10px;
-}
-
-.text>p {
+.text p {
     font-size: 1.4em;
 }
 
@@ -35,3 +30,38 @@
     list-style-type: none;
 }
 
+#myPhoto {
+    float: left;
+    margin: 10px;
+    margin-bottom: 0;
+}
+
+#academy {
+    float: right;
+    margin: 10px;
+    margin-bottom: 0;
+}
+
+.post img {
+    float: left;
+    margin: 10px;
+}
+
+.post a {
+    font-size: 1.3em;
+    font-family: MONOSPACE;
+    float: right;
+}
+
+.head {
+    min-height: 300px;
+}
+
+.foot {
+    vertical-align: bottom;
+}
+
+
+hr {
+    margin: 30px;
+}
