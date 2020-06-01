@@ -8,19 +8,19 @@
             <h1 class="display-6">Здраствуйте это сайт Шнайдера Ивана</h1>
             <p class="lead">
                 Это сайт резюме в котором я расскажу немного о себе, а начну я рассказ с того, что
-                расскажу вам о своих двух пристрастиях, первое - это путишествия, а вторая - это жажда знаний.
+                расскажу вам о своих двух пристрастиях, первое - это путешествия, а вторая - это жажда знаний.
             </p>
         </div>
     </div>
     <div class="text">
-        <img id="myPhoto" src="{{asset('images/my_photo.png')}}" alt="моё фото" height="300px">
+        <img id="myPhoto" src="{{ asset('images/my_photo.png') }}" alt="моё фото" height="300px">
         <p>
             Родился я в Крыму и там же проживал до 2007 года , в котором поступил в Одесскую государственную академию холода
             на кафедру информационных технологий по специальности информациоонно управляющие системы и технологии.
             В 2012 году успешно закончил обучение и устроился на работу не по специальности. Проработав на разных работах
             несколько лет я понял , что они не сильно интересны и не удовлетворяют мою жажду знаний и в 2019 году начал изучать веб программирование.
         </p>
-        <img id="academy" src="{{asset('images/my_diplom.png')}}" alt="">
+        <img id="academy" src="{{ asset('images/my_diplom.png') }}" alt="">
         <p>
             В академии я изучал в оснвновном базу в сфере IT, многое из которой было не так уж и интересно и не представлялось
             где это можно применить. Но были так же интересные предметы, которые заложили неплохую основу и дали понимание того , что програмирование
@@ -59,7 +59,7 @@
             <li class="list-group-item list-group-item-dark">ООП</li>
             <li class="list-group-item list-group-item-dark">MVC</li>
             <li class="list-group-item list-group-item-dark">Регулярные выражения</li>
-            <li class="list-group-item list-group-item-dark"><a href="https://github.com/ProPrator?tab=repositories">Git</a></li>
+            <a href="https://github.com/ProPrator" class="list-group-item list-group-item-action list-group-item-dark">Репозиторий GitHub</a>
             <li class="list-group-item list-group-item-dark">SSH</li>
         </ul>
     </div>

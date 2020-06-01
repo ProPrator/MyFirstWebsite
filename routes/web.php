@@ -20,8 +20,10 @@ Route::get('/contacts', function () {
     return view('contacts');
 });
 
-Route::get('/posts', 'PostController@showAll');
-Route::get('/post/{id}', 'PostController@showOne')->where(['id' => '[0-9]+']);
+Route::get('/posts', 'ArticleController@showAll');
+Route::get('/post/{id}', 'ArticleController@showOne')->where(['id' => '[0-9]+']);
+
+Route::get('/admin', 'ArticleController@adminMain');
 
 
 

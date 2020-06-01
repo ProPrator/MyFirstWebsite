@@ -13,52 +13,21 @@
         </div>
     </div>
     <div class="text">
-        <div class="post">
-            <div class="head">
-                <img src="{{asset('images/my_photo.png')}}" alt="моё фото" height="300px">
-                <h3>Статья</h3>
-                <p>
-                    Разнообразный и богатый опыт укрепление и развитие структуры представляет собой интересный эксперимент проверки
-                    дальнейших направлений развития. Повседневная практика показывает, что постоянное информационно-пропагандистское
-                </p>
+        @foreach($articles as $article)
+            <div class="post">
+                <div class="head">
+                    <img src="{{ asset($article->image) }}" alt="моё фото" height="300px">
+                    <h3>{{ $article->name }}</h3>
+                    <p>
+                        {{ $article->description }}
+                    </p>
+                </div>
+                <div class="foot">
+                    <i>{{ $article->created_at }}</i>
+                    <a href="/post/{{ $article->id }}" role="button" class="btn btn-secondary active"> Читать пост </a>
+                </div>
             </div>
-            <div class="foot">
-                <i>29-05-2020</i>
-                <a href="/post/1" role="button" class="btn btn-secondary active"> Читать пост </a>
-            </div>
-        </div>
-        <hr>
-        <div class="post">
-            <div class="head">
-                <img src="{{asset('images/my_photo.png')}}" alt="моё фото" height="300px">
-                <h3>Статья</h3>
-                <p>
-                    Разнообразный и богатый опыт укрепление и развитие структуры представляет собой интересный эксперимент проверки
-                    дальнейших направлений развития. Повседневная практика показывает, что постоянное информационно-пропагандистское
-                </p>
-            </div>
-            <div class="foot">
-                <i>29-05-2020</i>
-                <a href="/post/1" role="button" class="btn btn-secondary active"> Читать пост </a>
-            </div>
-        </div>
-        <hr>
-        <div class="post">
-            <div class="head">
-                <img src="{{asset('images/my_photo.png')}}" alt="моё фото" height="300px">
-                <h3>Статья</h3>
-                <p>
-                    Разнообразный и богатый опыт укрепление и развитие структуры представляет собой интересный эксперимент проверки
-                    дальнейших направлений развития. Повседневная практика показывает, что постоянное информационно-пропагандистское
-                </p>
-            </div>
-            <div class="foot">
-                <i>29-05-2020</i>
-                <a href="/post/1" role="button" class="btn btn-secondary active"> Читать пост </a>
-            </div>
-        </div>
-        <hr>
+            <hr>
+        @endforeach
     </div>
-
-
 @endsection

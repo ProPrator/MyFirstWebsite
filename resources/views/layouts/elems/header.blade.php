@@ -24,6 +24,7 @@
                         <a class="nav-link" href="/contacts">Контакты</a>
                     </li>
                 </ul>
+                <a class="btn btn-secondary" href="/admin" role="button">Админка</a>
             </div>
         </nav>
     </header>
