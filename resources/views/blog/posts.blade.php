@@ -24,7 +24,7 @@
                 </div>
                 <div class="foot">
                     <i>{{ $article->created_at }}</i>
-                    <a href="/post/{{ $article->id }}" role="button" class="btn btn-secondary active"> Читать пост </a>
+                    <a href="/article/{{ $article->id }}" role="button" class="btn btn-secondary active"> Читать пост </a>
                 </div>
             </div>
             <hr>

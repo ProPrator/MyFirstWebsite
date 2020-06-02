@@ -18,7 +18,7 @@
                         <a class="nav-link" href="/">Главная<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/posts">Блог<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/articles">Блог<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/contacts">Контакты</a>

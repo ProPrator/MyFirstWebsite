@@ -3,7 +3,7 @@
 @section('title', 'Блог')
 
 @section('main')
-    <div class="text">
+    <div class="text text-blog">
         <div class="post">
             <h3>{{ $article->name }}</h3>
             <img src="{{ asset($article->image) }}" alt="Картинка">
@@ -13,14 +13,20 @@
             <span id="date">Статья написана <i>{{ $article->created_at }}</i></span>
         </div>
         <br>
-        @foreach($comments as $comment)
-        <div class="comment">
-            <h4>{{ $comment->user->name }}</h4>
-            <p>
-                {{ $comment->text }}
-            </p>
-            <hr>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col">
+                @foreach($comments as $comment)
+                    <div class="comment">
+                        <h4>{{ $comment->user->name }}</h4>
+                        <p>
+                            {{ $comment->text }}
+                        </p>
+                        <hr>
+                    </div>
+                @endforeach
+            </div>
+            <div class="col-2"></div>
         </div>
-        @endforeach
     </div>
 @endsection

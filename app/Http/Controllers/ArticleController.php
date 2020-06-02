@@ -16,21 +16,50 @@ class ArticleController extends Controller
 
     public function showOne($id)
     {
-        $article = Article::find($id);
+        $article = Article::findOrFail($id);
 
-        $comments = Article::find($id)->comments;
+        $comments = Article::findOrFail($id)->comments;
 
-        dump($comments);
         return view('blog.post', [
             'article'  => $article,
             'comments' => $comments
         ]);
     }
 
-    public function adminMain()
+    public function adminMain(Request $request)
     {
         $articles = Article::get();
 
-        return view('admin.main', ['articles' => $articles]);
+        $message = $request->session()->get('message');
+        $status  = $request->session()->get('status');
+
+        return view('admin.main', [
+            'articles' => $articles,
+            'message'  => $message,
+            'status'   => $status
+            ]);
+    }
+
+    public function deleted(Request $request, $id)
+    {
+        $article = Article::findOrFail($id);
+
+        $name = $article->name;
+
+
+            $article->comments->delete();
+            $article->delete();
+            $request->session()->keep([
+                'message' => "Статья $name, вместе с коментариями относящимся к ней, удалена",
+                'status'  => 'success'
+                ]);
+//        } else {
+//            $request->session()->keep([
+//                'message' => "Статья $name не удалена, что-то пошло не так",
+//                'status'  => 'danger'
+//            ]);
+//        }
+
+        return redirect()->route('admin');
     }
 }

@@ -4,6 +4,9 @@
 
 @section('main')
     <div id="admin">
+        <div class="alert alert-{{ $status }}" role="alert">
+            {{ $message ?? '' }}
+        </div>
         <a class="btn btn-secondary" href="#" role="button">Написать статью</a>
         <hr>
         <table class="table table-secondary">
@@ -21,11 +24,11 @@
                 @foreach($articles as $article)
                     <tr>
                         <th scope="row">{{ $article->id }}</th>
-                        <td><a href="/post/{{ $article->id }}">{{ $article->name }}</a></td>
+                        <td><a href="/admin/{{ $article->id }}">{{ $article->name }}</a></td>
                         <td>{{ $article->created_at }}</td>
                         <td>{{ $article->updated_at }}</td>
                         <td><a href="">редактировать</a></td>
-                        <td><a href="">удалить</a></td>
+                        <td><a href="article/deleted/{{ $article->id }}">удалить</a></td>
                     </tr>
                 @endforeach
             </tbody>

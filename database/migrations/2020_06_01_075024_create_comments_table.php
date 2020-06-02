@@ -24,7 +24,7 @@ class CreateCommentsTable extends Migration
 
             $table->integer('article_id')->unsigned()->default(1);
 
-            $table->foreign('article_id')->references('id')->on('articles');
+            $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
         });
     }
 

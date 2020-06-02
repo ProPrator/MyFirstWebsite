@@ -20,10 +20,12 @@ Route::get('/contacts', function () {
     return view('contacts');
 });
 
-Route::get('/posts', 'ArticleController@showAll');
-Route::get('/post/{id}', 'ArticleController@showOne')->where(['id' => '[0-9]+']);
+Route::get('/articles', 'ArticleController@showAll');
+Route::get('/article/{id}', 'ArticleController@showOne')->where(['id' => '[0-9]+']);
+Route::get('/article/deleted/{id}', 'ArticleController@deleted')->where(['id' => '[0-9]+']);
 
-Route::get('/admin', 'ArticleController@adminMain');
+Route::get('/admin', 'ArticleController@adminMain')->name('admin');
+Route::get('/admin/{id}', 'CommentController@allCommentsOfPost')->where(['id' => '[0-9]+']);
 
 
 
