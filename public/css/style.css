@@ -74,4 +74,13 @@ hr {
     margin: 30px;
 }
 
+#admin>h3 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.edit-img {
+    margin-bottom: 20px;
+}
+
 

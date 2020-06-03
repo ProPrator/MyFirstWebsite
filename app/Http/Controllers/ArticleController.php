@@ -46,20 +46,33 @@ class ArticleController extends Controller
 
         $name = $article->name;
 
+        if ($article->delete()) {
 
-            $article->comments->delete();
-            $article->delete();
-            $request->session()->keep([
-                'message' => "Статья $name, вместе с коментариями относящимся к ней, удалена",
-                'status'  => 'success'
-                ]);
-//        } else {
-//            $request->session()->keep([
-//                'message' => "Статья $name не удалена, что-то пошло не так",
-//                'status'  => 'danger'
-//            ]);
-//        }
+            $request->session()->flash('message',"Статья $name, вместе с коментариями относящимся к ней, удалена");
+            $request->session()->flash('status', 'success');
+        } else {
+            $request->session()->flash('message',"Статья $name не удалена, что-то пошло не так");
+            $request->session()->flash('status', 'danger');
+        }
 
         return redirect()->route('admin');
+    }
+
+    public function edit(Request $request, $id)
+    {
+        $article = Article::find($id);
+
+        if ($request->isMethod('post')) {
+            $this->validate($request, [
+                'name'        => 'required',
+                'description' => 'required',
+                'file'        => 'image',
+                'text'        => 'required',
+
+            ]);
+        } else {
+
+            return view('admin.edit', ['article' => $article]);
+        }
     }
 }
