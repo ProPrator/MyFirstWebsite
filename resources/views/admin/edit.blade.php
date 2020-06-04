@@ -5,7 +5,16 @@
 @section('main')
     <div id="admin">
         <h3>Здесь вы можете отредактировать свою статью</h3>
-        <form action="/" method="post">
+        @if(count($errors) > 0)
+            <ul class="alert alert-danger">
+                @foreach($errors->all() as $error)
+                    <li>
+                            {{ $error }}
+                    </li>
+                @endforeach
+            </ul>
+        @endif
+        <form action="/article/edit/{{ $article->id }}" method="post">
             @csrf
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Название статьи</label>

@@ -47,32 +47,61 @@ class ArticleController extends Controller
         $name = $article->name;
 
         if ($article->delete()) {
-
-            $request->session()->flash('message',"Статья $name, вместе с коментариями относящимся к ней, удалена");
-            $request->session()->flash('status', 'success');
+            $this->requestFlashMessage($request, "Статья $name, вместе с коментариями относящимся к ней, удалена", 'success');
         } else {
-            $request->session()->flash('message',"Статья $name не удалена, что-то пошло не так");
-            $request->session()->flash('status', 'danger');
+            $this->requestFlashMessage($request, "Статья $name не удалена, что-то пошло не так", 'danger');
         }
 
         return redirect()->route('admin');
+    }
+
+    public function showEditForm($id)
+    {
+        $article = Article::find($id);
+
+        return view('admin.edit', ['article' => $article]);
+
     }
 
     public function edit(Request $request, $id)
     {
         $article = Article::find($id);
 
-        if ($request->isMethod('post')) {
-            $this->validate($request, [
-                'name'        => 'required',
-                'description' => 'required',
-                'file'        => 'image',
-                'text'        => 'required',
+        $name = $article->name;
 
-            ]);
+        $rules = [
+            'name'        => 'required',
+            'description' => 'required',
+            'file'        => 'nullable|image',
+            'text'        => 'required'
+        ];
+
+        $this->validate($request, $rules);
+
+        $article->name        = $request->input('name');
+        $article->description = $request->input('description');
+        $article->text        = $request->input('text');
+
+        if ($article->save()) {
+            $this->requestFlashMessage($request, "Статья $name, успешно отредактированна", 'success');
         } else {
-
-            return view('admin.edit', ['article' => $article]);
+            $this->requestFlashMessage($request, "Статья $name не отредактированна, что-то пошло не так", 'danger');
         }
+
+        return redirect()->route('admin');
     }
+
+    private function requestFlashMessage(Request $request, $message, $status)
+    {
+        $request->session()->flash('message',$message);
+        $request->session()->flash('status', $status);
+
+        return true;
+    }
+
+    private function saveImage()
+    {
+
+    }
+
 }
