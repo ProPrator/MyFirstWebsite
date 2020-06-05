@@ -21,7 +21,7 @@
                     <td>{{ $comment->user->name }}</td>
                     <td>{{ $comment->text }}</td>
                     <td>{{ $comment->created_at }}</td>
-                    <td><a href="">удалить</a></td>
+                    <td><a href="/admin/comment/delete/{{ $comment->id }}">удалить</a></td>
                 </tr>
             @endforeach
             </tbody>

@@ -6,7 +6,7 @@
     <div class="text text-blog">
         <div class="post">
             <h3>{{ $article->name }}</h3>
-            <img src="{{ asset($article->image) }}" alt="Картинка">
+            <img src="{{ asset('/storage/' . $article->image) }}" alt="Картинка">
             <p>
                 {{ $article->text }}
             </p>
@@ -14,7 +14,7 @@
         </div>
         <br>
         <div class="row">
-            <div class="col-2"></div>
+            <div class="col-3"></div>
             <div class="col">
                 @foreach($comments as $comment)
                     <div class="comment">
@@ -26,7 +26,7 @@
                     </div>
                 @endforeach
             </div>
-            <div class="col-2"></div>
+            <div class="col-3"></div>
         </div>
     </div>
 @endsection

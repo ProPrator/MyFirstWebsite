@@ -7,7 +7,7 @@
         <div class="alert alert-{{ $status }}" role="alert">
             {{ $message }}
         </div>
-        <a class="btn btn-secondary" href="#" role="button">Написать статью</a>
+        <a class="btn btn-secondary" href="/article/add" role="button">Написать статью</a>
         <hr>
         <table class="table table-secondary">
             <thead>

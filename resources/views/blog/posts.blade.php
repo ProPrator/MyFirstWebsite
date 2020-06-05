@@ -16,7 +16,7 @@
         @foreach($articles as $article)
             <div class="post">
                 <div class="head">
-                    <img src="{{ asset($article->image) }}" alt="моё фото" height="300px">
+                    <img src="{{ asset('/storage/' . $article->image) }}" alt="моё фото" height="300px">
                     <h3>{{ $article->name }}</h3>
                     <p>
                         {{ $article->description }}

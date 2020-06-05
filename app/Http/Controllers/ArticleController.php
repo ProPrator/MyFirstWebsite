@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Article;
+use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
@@ -47,9 +48,9 @@ class ArticleController extends Controller
         $name = $article->name;
 
         if ($article->delete()) {
-            $this->requestFlashMessage($request, "Статья $name, вместе с коментариями относящимся к ней, удалена", 'success');
+            $this->flashMessage($request, "Статья $name, вместе с коментариями относящимся к ней, удалена", 'success');
         } else {
-            $this->requestFlashMessage($request, "Статья $name не удалена, что-то пошло не так", 'danger');
+            $this->flashMessage($request, "Статья $name не удалена, что-то пошло не так", 'danger');
         }
 
         return redirect()->route('admin');
@@ -82,26 +83,64 @@ class ArticleController extends Controller
         $article->description = $request->input('description');
         $article->text        = $request->input('text');
 
+        if ($request->file) {
+
+            Storage::disk('public')->delete($article->image);
+
+            $path = $request->file('file')->store('images', 'public');
+
+            $article->image = $path;
+        }
+
         if ($article->save()) {
-            $this->requestFlashMessage($request, "Статья $name, успешно отредактированна", 'success');
+            $this->flashMessage($request, "Статья $name, успешно отредактированна", 'success');
         } else {
-            $this->requestFlashMessage($request, "Статья $name не отредактированна, что-то пошло не так", 'danger');
+            $this->flashMessage($request, "Статья $name не отредактированна, что-то пошло не так", 'danger');
         }
 
         return redirect()->route('admin');
     }
 
-    private function requestFlashMessage(Request $request, $message, $status)
+    public function add(Request $request)
+    {
+        $rules = [
+            'name'        => 'required',
+            'description' => 'required',
+            'file'        => 'file|image',
+            'text'        => 'required'
+        ];
+
+        $this->validate($request, $rules);
+
+        $article = new Article;
+
+        $article->name        = $request->input('name');
+        $article->description = $request->input('description');
+        $article->text        = $request->input('text');
+
+        if ($request->file) {
+
+            $path = $request->file('file')->store('images', 'public');
+
+            $article->image = $path;
+        }
+
+        $name = $article->name;
+
+        if ($article->save()) {
+            $this->flashMessage($request, "Статья $name, успешно отредактированна", 'success');
+        } else {
+            $this->flashMessage($request, "Статья $name не отредактированна, что-то пошло не так", 'danger');
+        }
+
+        return redirect()->route('admin');
+    }
+
+    private function flashMessage(Request $request, $message, $status)
     {
         $request->session()->flash('message',$message);
         $request->session()->flash('status', $status);
 
         return true;
     }
-
-    private function saveImage()
-    {
-
-    }
-
 }

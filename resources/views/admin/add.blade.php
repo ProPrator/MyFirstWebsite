@@ -9,23 +9,23 @@
             <ul class="alert alert-danger">
                 @foreach($errors->all() as $error)
                     <li>
-                            {{ $error }}
+                        {{ $error }}
                     </li>
                 @endforeach
             </ul>
         @endif
-        <form action="/article/edit/{{ $article->id }}" method="post" enctype="multipart/form-data">
+        <form action="/article/add" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Название статьи</label>
                 <div class="col-sm-10">
-                    <input class="form-control" type="text" name="name" value="{{ $article->name }}">
-            </div>
+                    <input class="form-control" type="text" name="name">
+                </div>
             </div>
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Описание</label>
                 <div class="col-sm-10">
-                    <input class="form-control" type="text" name="description" value="{{ $article->description }}">
+                    <input class="form-control" type="text" name="description">
                 </div>
             </div>
             <div class="form-group row">
@@ -34,20 +34,13 @@
                     <input type="file" name="file" class="form-control-file" id="exampleFormControlFile1">
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-2"></div>
-                <div class="col-sm-10">
-                    <img class="edit-img" src="{{ asset('/storage/' . $article->image) }}" alt="картинка">
-                </div>
-            </div>
-
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Текст статьи</label>
                 <div class="col-sm-10">
-                    <textarea class="form-control" name="text">{{ $article->text }}</textarea>
+                    <textarea class="form-control" name="text"></textarea>
                 </div>
             </div>
-            <button type="submit" class="btn btn-secondary btn-lg btn-block">Внести изменения в статью</button>
+            <button type="submit" class="btn btn-secondary btn-lg btn-block">Добавить статью</button>
         </form>
     </div>
 @endsection
