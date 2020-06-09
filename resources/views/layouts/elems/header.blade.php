@@ -14,17 +14,19 @@
         <nav class="navbar  navbar-expand navbar-dark bg-dark">
             <div class="collapse navbar-collapse d-flex justify-content-center">
                 <ul class="navbar-nav">
-                    <li class="nav-item active">
+                    <li class="nav-item {{ Request::path() == '/' ? 'active' : '' }}">
                         <a class="nav-link" href="/">Главная<span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item {{ Request::path() == 'articles' ? 'active' : '' }}">
                         <a class="nav-link" href="/articles">Блог<span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item {{ Request::path() == 'contacts' ? 'active' : '' }}">
                         <a class="nav-link" href="/contacts">Контакты</a>
                     </li>
+                    <li class="nav-item {{ Request::path() == 'admin' ? 'active' : '' }}">
+                        <a class="nav-link" href="/admin">Админка</a>
+                    </li>
                 </ul>
-                <a class="btn btn-secondary" href="/admin" role="button">Админка</a>
             </div>
         </nav>
     </header>

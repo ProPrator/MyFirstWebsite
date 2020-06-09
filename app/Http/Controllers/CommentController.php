@@ -8,11 +8,15 @@ use App\Article;
 
 class CommentController extends Controller
 {
+
+    /*
+     * shows all article comments
+     */
     public function allComments($id)
     {
         $nameArticle = Article::findOrFail($id)->value('name');
 
-        $comments = Article::findOrFail($id)->comments;
+        $comments = Article::findOrFail($id)->comments()->paginate(10);
 
         return view('admin.comments', [
             'nameArticle' => $nameArticle,
@@ -20,6 +24,9 @@ class CommentController extends Controller
         ]);
     }
 
+    /*
+     * deletes comment
+     */
     public function delete(Request $request, $id)
     {
         $comment = Comment::findOrFail($id);
@@ -33,13 +40,5 @@ class CommentController extends Controller
         }
 
         return redirect()->route('admin');
-    }
-
-    private function flashMessage(Request $request, $message, $status)
-    {
-        $request->session()->flash('message',$message);
-        $request->session()->flash('status', $status);
-
-        return true;
     }
 }

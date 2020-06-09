@@ -9,16 +9,8 @@ main {
     font-family: SEGOE SCRIPT;
     text-indent: 20px;
     padding: 30px;
-
 }
 
-    footer>li>a {
-        color: darkgrey;
-    }
-
-    footer>li>a:hover {
-        color: #f5f5f5;
-    }
 .text-blog {
     display: flex;
     flex-direction: column;
@@ -35,7 +27,19 @@ main {
 }
 
 .comment {
+    text-align: justify;
+}
+
+.comment>h4 {
     text-align: center;
+}
+
+.comment-title {
+    text-align: center;
+}
+
+.comment-input {
+    margin: 20px 0;
 }
 
 #myPhoto {
@@ -50,15 +54,20 @@ main {
     margin-bottom: 0;
 }
 
+.post h3 {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
 .post img {
     float: left;
     margin: 10px;
 }
 
-.post a {
+.post-button {
     font-size: 1.3em;
     font-family: MONOSPACE;
-    float: right;
 }
 
 .head {
@@ -66,7 +75,9 @@ main {
 }
 
 .foot {
-    vertical-align: bottom;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 
@@ -79,8 +90,42 @@ hr {
     margin-bottom: 30px;
 }
 
+.table a{
+    color: #212529;
+    text-decoration: none;
+}
+
+.table a:hover {
+    color: #fff;
+}
+
 .edit-img {
     margin-bottom: 20px;
 }
+
+footer-link {
+    color: darkgrey;
+}
+
+.footer-link:hover {
+    background: lightgray;
+}
+
+.page-item.active .page-link {
+    background-color: #545b62;
+    border-color: #545b62;
+}
+
+.page-link {
+    color: #1b1e21;
+}
+
+.page-link:hover {
+    color: #1b1e21;
+}
+
+
+
+
 
 

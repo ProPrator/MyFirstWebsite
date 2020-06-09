@@ -16,9 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('mainPage');
 });
-Route::get('/contacts', function () {
-    return view('contacts');
-});
 
 Route::get('/articles', 'ArticleController@showAll');
 Route::get('/article/{id}', 'ArticleController@showOne')->where(['id' => '[0-9]+']);
@@ -29,6 +26,10 @@ Route::get('/article/add', function () {
     return view('admin.add');
 });
 Route::post('article/add', 'ArticleController@add');
+
+Route::get('/contacts', function () {
+    return view('contacts');
+});
 
 Route::get('/admin', 'ArticleController@adminMain')->name('admin');
 Route::get('/admin/{id}', 'CommentController@allComments')->where(['id' => '[0-9]+']);

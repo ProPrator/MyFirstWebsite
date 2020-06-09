@@ -24,10 +24,15 @@
                 </div>
                 <div class="foot">
                     <i>{{ $article->created_at }}</i>
-                    <a href="/article/{{ $article->id }}" role="button" class="btn btn-secondary active"> Читать пост </a>
+                    <div class="post-button">
+                        <form action="/article/{{ $article->id }}">
+                            <input type="submit" class="btn btn-secondary btn-lg active" value="Читать пост">
+                        </form>
+                    </div>
                 </div>
             </div>
             <hr>
         @endforeach
+        {{ $articles->links() }}
     </div>
 @endsection

@@ -5,10 +5,10 @@
     <foter>
         <ul class="nav justify-content-center bg-dark d-flex align-items-center">
             <li class="nav-item">
-                <a class="nav-link" href="https://github.com/ProPrator?tab=repositories"><img src="{{asset('images/icons/git.png')}}" alt="GitHub"></a>
+                <a class="nav-link footer-link" href="https://github.com/ProPrator?tab=repositories"><img src="{{asset('images/icons/git.png')}}" alt="GitHub"></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="https://vk.com/shnaider_ivan"><img src="{{asset('images/icons/vk.png')}}" alt="VK"></a>
+                <a class="nav-link footer-link" href="https://vk.com/shnaider_ivan"><img src="{{asset('images/icons/vk.png')}}" alt="VK"></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Shnaider Ivan 2020</a>

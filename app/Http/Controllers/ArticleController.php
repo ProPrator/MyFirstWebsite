@@ -5,31 +5,53 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Article;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
+    /*
+     * shows all articles
+     * and make pagination
+     */
     public function showAll()
     {
-        $articles = Article::get();
+        $articles = Article::paginate(5);
 
         return view('blog.posts', ['articles' => $articles]);
     }
 
+    /*
+     * shows one article
+     * and comments of this article with pagination.
+     * if user authorized show form
+     */
     public function showOne($id)
     {
         $article = Article::findOrFail($id);
 
-        $comments = Article::findOrFail($id)->comments;
+        $comments = Article::findOrFail($id)->comments()->paginate(10);
+
+
+        if (Auth::check()) {
+            $showForm = true;
+        } else {
+            $showForm = false;
+        }
 
         return view('blog.post', [
             'article'  => $article,
-            'comments' => $comments
+            'comments' => $comments,
+            'showForm' => $showForm
         ]);
     }
 
+    /*
+     * shows main admin page with all articles
+     * with the ability to delete and edit
+     */
     public function adminMain(Request $request)
     {
-        $articles = Article::get();
+        $articles = Article::paginate(10);
 
         $message = $request->session()->get('message');
         $status  = $request->session()->get('status');
@@ -41,6 +63,9 @@ class ArticleController extends Controller
             ]);
     }
 
+    /*
+     * deletes article with all her comments
+     */
     public function deleted(Request $request, $id)
     {
         $article = Article::findOrFail($id);
@@ -56,6 +81,9 @@ class ArticleController extends Controller
         return redirect()->route('admin');
     }
 
+    /*
+     * shows the article editing form
+     */
     public function showEditForm($id)
     {
         $article = Article::find($id);
@@ -64,6 +92,9 @@ class ArticleController extends Controller
 
     }
 
+    /*
+     * editing article with validate
+     */
     public function edit(Request $request, $id)
     {
         $article = Article::find($id);
@@ -101,6 +132,9 @@ class ArticleController extends Controller
         return redirect()->route('admin');
     }
 
+    /*
+     * adding article with validate
+     */
     public function add(Request $request)
     {
         $rules = [
@@ -136,11 +170,5 @@ class ArticleController extends Controller
         return redirect()->route('admin');
     }
 
-    private function flashMessage(Request $request, $message, $status)
-    {
-        $request->session()->flash('message',$message);
-        $request->session()->flash('status', $status);
 
-        return true;
-    }
 }
