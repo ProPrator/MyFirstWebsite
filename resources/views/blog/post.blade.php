@@ -34,8 +34,17 @@
         <div class="col-sm-3"></div>
         <div class="col-sm">
             @if ($showForm)
+                @if(count($errors) > 0)
+                    <ul class="alert alert-danger">
+                        @foreach($errors->all() as $error)
+                            <li>
+                                {{ $error }}
+                            </li>
+                        @endforeach
+                    </ul>
+                @endif
             <h3 class="comment-title">Оставте отзыв</h3>
-            <form action="" method="post">
+            <form action="/comment/add/{{ $article->id }}" method="post">
                 @csrf
                 <textarea class="form-control comment-input" name="text"></textarea>
                 <button type="submit" class="btn btn-secondary btn-lg btn-block">Добавить отзыв</button>

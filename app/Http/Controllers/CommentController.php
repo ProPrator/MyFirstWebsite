@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use App\Comment;
 use Illuminate\Http\Request;
 use App\Article;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
 
     /*
-     * shows all article comments
+     * show all article comments
      */
     public function allComments($id)
     {
@@ -25,7 +26,7 @@ class CommentController extends Controller
     }
 
     /*
-     * deletes comment
+     * delete comment
      */
     public function delete(Request $request, $id)
     {
@@ -40,5 +41,26 @@ class CommentController extends Controller
         }
 
         return redirect()->route('admin');
+    }
+
+    /*
+     * add comment
+     */
+    public function add(Request $request, $id)
+    {
+        $rules = ['text' => 'required'];
+
+        $this->validate($request, $rules);
+
+        $article = Article::findOrFail($id);
+        $comment = new Comment;
+        $user = Auth::user();
+
+        $comment->text    = $request->input('text');
+
+        $comment->article()->associate($article);
+        $comment->user()->associate($user)->save();
+
+        return redirect()->route('article', $article);
     }
 }

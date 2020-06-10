@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class ArticleController extends Controller
 {
     /*
-     * shows all articles
+     * show all articles
      * and make pagination
      */
     public function showAll()
@@ -21,7 +21,7 @@ class ArticleController extends Controller
     }
 
     /*
-     * shows one article
+     * show one article
      * and comments of this article with pagination.
      * if user authorized show form
      */
@@ -46,7 +46,7 @@ class ArticleController extends Controller
     }
 
     /*
-     * shows main admin page with all articles
+     * show main admin page with all articles
      * with the ability to delete and edit
      */
     public function adminMain(Request $request)
@@ -64,7 +64,7 @@ class ArticleController extends Controller
     }
 
     /*
-     * deletes article with all her comments
+     * delete article with all her comments
      */
     public function deleted(Request $request, $id)
     {
@@ -82,7 +82,7 @@ class ArticleController extends Controller
     }
 
     /*
-     * shows the article editing form
+     * show the article editing form
      */
     public function showEditForm($id)
     {
